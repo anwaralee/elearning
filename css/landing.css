@@ -1,0 +1,43 @@
+/*
+Abhijeet Bajracharya
+abhijeet@access-keys.com	
+*/
+/*Global Reset*/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outline:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+/*Global Styles*/
+body,html{height:100%;}
+body{font-size:12px;color:#000; background:url(../images/bg_main.gif) repeat; font-family:Arial, Helvetica, sans-serif;}
+.floatLeft{float:left;}
+.floatRight{float:right;}
+.clear{clear:both;}
+.wrapper{width:100%;min-height:100%;}
+img{max-width:100%;}
+.seperator{height:1px;display:block;background:#ccc;border-bottom:1px solid #fff; margin:10px 0;}
+.margintopbot10{margin:10px 0; }
+
+/*Login Page*/
+.header{ margin-bottom:10px; padding-top:10px;}
+.logo{max-width:250px; width: expression(this.width > 250 ? 250: true);}
+
+.loginWrap{max-width:1000px; width:100%; margin:auto;}
+.loginWrap p{margin-bottom:10px; line-height:20px;}
+.loginWrap h1{font-size:18px; text-transform:uppercase; font-weight:normal;}
+.loginWrap .texts ul{margin-left:15px; margin-top:10px; margin-bottom:10px;}
+.loginWrap .texts ul li{list-style:circle;}
+.top{background:url(../images/top.png) repeat-x; height:5px; display:block;}
+
+.form,.texts{width:50%; line-height:20px;}
+
+.loginHeader{text-align:center; font-size:30px; padding:15px 0; text-transform:uppercase; margin-top:50px;}
+.loginForm{background:#fff; border:1px solid #ccc; border-radius:5px; padding:10px; margin:auto;-webkit-box-shadow: 1px 1px 5px 5px rgba(200, 200, 200, 0.7);-moz-box-shadow: 1px 1px 5px 5px rgba(200, 200, 200, 0.7);box-shadow: 1px 1px 5px 5px rgba(200, 200, 200, 0.7); width:75%; margin-bottom:25px;}
+.loginForm tr td{vertical-align:top; padding:5px;}
+.loginForm h1{font-weight:bold;}
+.loginForm span{margin-right:10px; width:140px;}
+.images{max-width:70%; text-align:center; margin:auto;}
+.loginForm h1{font-size:16px;}
+.registerorforgot{padding:20px 0; width:220px; margin:auto; text-align:center;padding-bottom:34px; }
+/*Footer*/
+.footer{background:url(../images/admin/footerbackground.png) repeat-x; height:14px; display:block;color:#fff; padding:10px 15px; text-transform:uppercase; font-size:10px;text-align:center;}
+.footer a{color:#fff !important;}
+.forms{padding-bottom:20px;}

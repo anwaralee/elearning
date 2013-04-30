@@ -1,0 +1,28 @@
+/*
+Abhijeet Bajracharya
+abhijeet@access-keys.com	
+*/
+/*Global Reset*/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outline:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+/*Global Styles*/
+body,html{height:100%;}
+body{background:#f7f7f7; font-size:12px; font-family:Arial, Helvetica, sans-serif; color:#000;}
+.floatLeft{float:left;}
+.floatRight{float:right;}
+.clear{clear:both;}
+.wrapper{width:100%;min-height:100%;}
+img{max-width:100%;}
+.seperator{height:1px;display:block;background:#ccc;border-bottom:1px solid #fff; margin:10px 0;}
+
+/*Login Page*/
+.loginHeader{text-align:center; font-size:30px; padding:15px 0; text-transform:uppercase; margin-top:50px;}
+.loginForm{background:#fff; border:1px solid #ccc; border-radius:5px; padding:10px; width:220px; margin:auto;-webkit-box-shadow: 1px 1px 5px 5px rgba(200, 200, 200, 0.7);
+-moz-box-shadow: 1px 1px 5px 5px rgba(200, 200, 200, 0.7);
+box-shadow: 1px 1px 5px 5px rgba(200, 200, 200, 0.7); }
+.registerorforgot{padding:20px 0; width:220px; margin:auto; text-align:center;}
+
+/*Header*/
+.header{background:url(../images/admin/headerbackground.png) repeat-x; height:34px; display:block;color:#fff; padding:0 15px;}
+
+/*Content*/

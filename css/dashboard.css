@@ -1,0 +1,62 @@
+/*
+Abhijeet Bajracharya
+abhijeet@access-keys.com	
+*/
+/*Global Reset*/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outline:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+/*Global Styles*/
+body,html{height:100%;}
+body{background:url(../images/admin/navside.png) #f7f7f7 20% top repeat-y; font-size:12px; font-family:Arial, Helvetica, sans-serif; color:#000;}
+.floatLeft{float:left;}
+.floatRight{float:right;}
+.clear{clear:both;}
+.wrapper{width:100%;min-height:100%;}
+img{max-width:100%;  width: expression(this.width > 200 ? 200: true);}
+.seperator{height:1px;display:block;background:#ccc;border-bottom:1px solid #fff; margin:10px 0;}
+.margintopbot10{margin:10px 0; }
+
+/*Header*/
+.header{background:url(../images/admin/headerbackground.png) repeat-x; height:34px; display:block;color:#fff; padding:0 15px;}
+.header h1{font-size:12px; font-weight:normal;}
+.header h1 a{color:#fff;}
+/*Login Page*/
+
+.loginHeader{text-align:center; font-size:30px; padding:15px 0; text-transform:uppercase; margin-top:50px;}
+.loginForm{background:#fff; border:1px solid #ccc; border-radius:5px; padding:10px; width:220px; margin:auto;-webkit-box-shadow: 1px 1px 5px 5px rgba(200, 200, 200, 0.7);
+-moz-box-shadow: 1px 1px 5px 5px rgba(200, 200, 200, 0.7);
+box-shadow: 1px 1px 5px 5px rgba(200, 200, 200, 0.7); }
+.loginForm h1{font-size:16px;}
+.registerorforgot{padding:20px 0; width:220px; margin:auto; text-align:center;padding-bottom:34px; }
+.logo{text-align:center; padding-top:50px;}
+/*Footer*/
+.footer{background:url(../images/admin/footerbackground.png) repeat-x; height:14px; display:block;color:#fff; padding:10px 15px; text-transform:uppercase; font-size:10px; margin-top:-34px; text-align:center;}
+.footer a{color:#fff !important;}
+
+/*SideBar*/
+.options{background:#f5f5f5; width:20%; height:100%; display:block;}
+.options ul li{list-style:none;border-top:1px solid #fff;border-bottom:1px solid #ccc;}
+.options ul li a{color:#333333;padding:10px 15px;margin-left:2px; display:block;
+-webkit-transition-property: background; -webkit-transition-duration: 500ms;
+ -moz-transition-property: background; -moz-transition-duration: 500ms;  background:#f7f7f7;}
+.options ul li a:hover{ text-decoration:none;background:#e7e7e7; text-shadow:1px 1px #fff;}
+.options .logo{padding:15px;border-bottom:1px solid #ccc;} 
+.register{width:750px; margin:auto;}
+.option_content{padding:15px; width:75%;display:block;}
+.admin_wrapper{padding-bottom:34px;}
+
+/*Content*/
+.option_content tr td,.option_content tr th{ padding:5px; border:1px solid #ccc}
+.option_content tr th{text-align:left;}
+.option_content h3{font-size:14px; margin:5px 0;}
+.option_content,.option_content p{line-height:15px;}
+.loginsettings .tx{padding:5px 0;}
+.option_content input[type="radio"]{vertical-align:middle}
+.h3side{font-weight:normal;}
+.dashboard ul,.dashboard ol{margin-left:20px;}
+
+.sCol{margin-right:10px;}
+
+@media screen and (max-width: 800px) {
+.options ul li {font-size:10px;}
+}
