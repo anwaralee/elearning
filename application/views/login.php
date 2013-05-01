@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>E-Learning</title>
+<title>Training Management System</title>
 
 <link href="<?php echo base_url();?>css/bootstrap.css" type="text/css" rel="stylesheet">
 <link href="<?php echo base_url();?>css/landing.css" type="text/css" rel="stylesheet">
@@ -57,6 +57,7 @@ else
 if(isset($page))
 {
 	echo "<div class='loginForm'>";
+        $data['allBatches'] = $allBatches;
 	$this->load->view($page);
 	echo "</div>";
 }
@@ -128,6 +129,6 @@ else { ?>
 </div><!--loginWrap-->
 </div><!--wrapper-->
 <div class="footer">
-eLearning - Copyright © Vital One Technologies
+Training Management System - Copyright © Web Nepal
 </div>
 

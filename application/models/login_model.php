@@ -98,16 +98,18 @@
 	function signup_verify()
 	{
 			$first=$this->input->post('first');
-			$middle=$this->input->post('middle');
+			//$middle=$this->input->post('middle');
 			$last=$this->input->post('last');
 			$user=$this->input->post('user');
 			$pass=$this->input->post('pass');
 			$contact=$this->input->post('contact');
 			//$image=$this->input->post('image');
 			$email=$this->input->post('email');
-			$gender=$this->input->post('gender');
-			$yyyy=$this->input->post('yyyy');
-			$mm=$this->input->post('mm');
+                        $batch = $this->input->post('batch');
+                        $course = $this->input->post('course');
+			//$gender=$this->input->post('gender');
+			//$yyyy=$this->input->post('yyyy');
+			/*$mm=$this->input->post('mm');
 			$dd=$this->input->post('dd');
 			$country=$this->input->post('country');
 			$city=$this->input->post('city');
@@ -118,29 +120,31 @@
 			$ext = end(explode('/', $_FILES['image']['type']));
 			$complete=$file_name.".".$ext;
 			$path = str_replace('system/','',BASEPATH).'/images/users/'.$complete;
-			move_uploaded_file($_FILES['image']['tmp_name'],$path);
+			move_uploaded_file($_FILES['image']['tmp_name'],$path); */
 			$data = array(
 						   'user_id' =>'',				  
 						   'first_name' => $first ,
-						   'middle_name' => $middle ,
+						   //'middle_name' => $middle ,
 						   'last_name' => $last,
 						   'username' => $user,
 						   'password' => $pass,
 						   'contact_number' => $contact,
-						   'image' => $complete,
+                                                   'batch' =>$batch,
+                                                   'course'=>$course,
+						  // 'image' => $complete,
 						   'email' => $email,
-						   'gender' => $gender,
+						   /*'gender' => $gender,
 						   'dob_year' => $yyyy,
 						   'dob_month' => $mm,
 						   'dob_day' => $dd,
 						   'country_id' => $country,
 						   'city' => $city,
 						   'province_id' => $province,
-						   'postal_code' => $postal,
+						   'postal_code' => $postal, */
 						   'isPaid' => '',
-						   'registered_date' => $date,
-						   'verification_code' => '',
-						   'status' => ''
+						  // 'registered_date' => $date,
+						  // 'verification_code' => '',
+						   'status' => '1' 
 						);
 
 			$this->db->insert('tbl_users', $data); 	
@@ -170,5 +174,22 @@
 		
 	}
 	
+        function getAllBatches(){
+            $batches = $this->db->get('tbl_batch');
+             return $batches->result();
+        }
+        
+        function getAllCourses(){
+            
+             $courses = $this->db->get('tbl_course');
+             return $courses->result();
+        }
+        
+        function getCoursesByBatch($id){
+           
+            $courseByBatch = $this->db->get_where('tbl_course', array('batch_id'=>$id));
+            return $courseByBatch->result();
+            
+        }
 	}
 ?>

@@ -1,7 +1,7 @@
 </div><!--wrapper-->
 
 <div class="footer">
-eLearning - Copyright © Vital One Technologies
+Training Management System - Copyright © Web Nepal
 </div>
 
 

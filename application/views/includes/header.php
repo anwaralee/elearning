@@ -33,6 +33,6 @@ else
 
 <div class="wrapper">
 <div class="header">
-<h1><?php echo "Welcome To E-Learning ".$this->session->userdata('user'); ?></h1>
+<h1><?php echo "Welcome To Training Management System ".$this->session->userdata('user'); ?></h1>
 
 </div><!--loginHeader-->
