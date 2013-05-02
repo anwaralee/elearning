@@ -10,8 +10,7 @@
             url: "<?php echo base_url(); ?>login/getCoursesByBatch/"+val,
             data: "",
             success: function(msg){
-                alert(1);
-           
+                      
                 document.getElementById('course_list').innerHTML=msg;
             }
 
