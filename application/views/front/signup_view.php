@@ -10,8 +10,7 @@
             url: "<?php echo base_url(); ?>login/getCoursesByBatch/"+val,
             data: "",
             success: function(msg){
-                alert(1);
-           
+                      
                 document.getElementById('course_list').innerHTML=msg;
             }
 
@@ -24,6 +23,10 @@
                 confpass: {
                     required: true,
                     equalTo: "#pass"
+                },
+                user:
+                {
+                    minlength:5
                 }
             },
             messages: {
@@ -32,6 +35,10 @@
                     required: "Please provide a password",
                     equalTo: "Please enter the same password as above"
 			
+                },
+                user:
+                {
+                    minlength:"Length must be atleast 5 character"
                 }
             }
         });
@@ -46,9 +53,9 @@
 <?php echo "<font color='red'>" . validation_errors() . "</font>"; ?>
 <form action="<?php echo base_url(); ?>login/signup_verify" method="post" enctype="multipart/form-data" id="register">
     <table>
-        <tr><td>First Name<font color="red">*</font></td><td><input type='text' name='first' class="required"/></td></tr>
+        <tr><td>First Name<font color="red">*</font></td><td><input type='text' name='first' class="required" value="<?php if(isset($first)){echo $first;}?>"/></td></tr>
         <!--<tr><td>Middle Name</td><td><input type='text' name='middle'/></td></tr> -->
-        <tr><td>Last Name</td><td><input type='text' name='last'/></td></tr>
+        <tr><td>Last Name</td><td><input type='text' name='last' value="<?php if(isset($last)){echo $last;}?>"/></td></tr>
        <!-- <tr><td>Image</td><td><input type='file' name='image'/></td></tr> 
         <tr><td>DOB</td><td class="dob"> 
         <?php
@@ -108,9 +115,9 @@
         echo '</select>';
         ?>
         </td></tr> -->
-        <tr><td>Username<font color="red">*&nbsp;</font></td><td><input type='text' name='user' class="required"/></td></tr>
-        <tr><td>Password<font color="red">*&nbsp;</font></td><td><input type="password" name="pass" class="required" id="pass"/></td></tr>
-        <tr><td>Confirm Password<font color="red">*&nbsp;</font></td><td><input type="password" name="confpass" class="required" id="confpass"/></td></tr>
+        <tr><td>Username<font color="red">*&nbsp;</font></td><td><input type='text' name='user' class="required" value="<?php if(isset($user)){echo $user;}?>"/></td></tr>
+        <tr><td>Password<font color="red">*&nbsp;</font></td><td><input type="password" name="pass" class="required" id="pass"  value="<?php if(isset($pass)){echo $pass;}?>"/></td></tr>
+        <tr><td>Confirm Password<font color="red">*&nbsp;</font></td><td><input type="password" name="confpass" class="required" id="confpass"  value="<?php if(isset($pass)){echo $pass;}?>"/></td></tr>
         <!-- <tr><td>Gender</td><td><input type='radio' name='gender' value="male" class="required"/>&nbsp;Male&nbsp;<input type="radio" name="gender" value="female" class="required"/>&nbsp;Female</td></tr> -->
         <tr><td>Batch</td><td><select name='batch' id="select_batch" onchange="selectCourse()">
                     <option value="0">Select a Batch</option>
@@ -123,7 +130,7 @@
         <tr><td>Course</td><td><select name='course' id="course_list">
                     <option value="0">Select a Course</option>
                 </select></td></tr>
-        <tr><td>Contact Number</td><td><input type='text' name='contact'/></td></tr>
+        <tr><td>Contact Number</td><td><input type='text' name='contact' value="<?php if(isset($contact)){echo $contact;}?>"/></td></tr>
        <!-- <tr><td>City/Town</td><td><input type='text' name='city'/></td></tr> -->
         <!-- <tr><td>Province/State</td><td><input type='text' name='province'/></td></tr>
         <tr><td>Postal Code/Zip Code</td><td><input type='text' name='postal'/></td></tr>
@@ -138,7 +145,7 @@
         ?>
          </select>
         </td></tr> -->
-        <tr><td>Email<font color="red">*&nbsp;</font></td><td><input type='text' name='email' class="required"/></td></tr>
+        <tr><td>Email<font color="red">*&nbsp;</font></td><td><input type='text' name='email' class="required" value="<?php if(isset($email)){echo $email;}?>"/></td></tr>
     </table>
     <div class="seperator"></div>
     <input type='submit' name='submit' value="Sign Up" class="btn btn-primary"/>
