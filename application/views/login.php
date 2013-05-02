@@ -57,8 +57,7 @@ else
 if(isset($page))
 {
 	echo "<div class='loginForm'>";
-        $data['allBatches'] = $allBatches;
-	$this->load->view($page);
+        $this->load->view($page);
 	echo "</div>";
 }
 	else
