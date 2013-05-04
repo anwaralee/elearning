@@ -135,10 +135,9 @@
                                 <!--Appointment Today -->
                                 <div class="appointment_today texts" align="center"> 
                                     <div id="main_appnt_btn">
-                                        <input type='button' id="appnt_btn" name='submit' value="Book An Appointment Today" class="btn btn-primary" onclick="displayAppointment()"/>
+                                        <input type='button' id="appnt_btn" name='submit' value="Book An Appointment Today" class="btn btn-primary" onclick="$('#collapse_appnt').show();"/>
                                         <br/><br/>
-                                    </div> 
-                                    <div id="collapse_appnt">
+                                        <div id="collapse_appnt" style="display: none;">
 
                                         <input type='button' name='submit' value="Book Appointment Now" class="btn btn-success"/>
                                         <p style="font-family: sans-serif;font-size: xx-small">(If you are new to us Please book an appointment's to see one of our experienced Work Experience consultant today)</p>
