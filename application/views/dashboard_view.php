@@ -1,8 +1,8 @@
 <style type="text/css">
 object, #mediaplayer_wrapper
 {
-	  width: 0px;,!important
-      height: 0px;!important
+	  width: 0px !important;
+      height: 0px !important
 }
 </style>
 <?php
@@ -17,6 +17,7 @@ require 'includes/header.php';
 	$this->load->view($pages);
 ?>
 </div>
+    
 <div class="clear"></div>
  </div><!--admin-wrapper-->
 

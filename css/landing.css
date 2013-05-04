@@ -25,6 +25,7 @@ img{max-width:100%;}
 .loginWrap h1{font-size:18px; text-transform:uppercase; font-weight:normal;}
 .loginWrap .texts ul{margin-left:15px; margin-top:10px; margin-bottom:10px;}
 .loginWrap .texts ul li{list-style:circle;}
+.appointment_today {margin-left: 187px}
 .top{background:url(../images/top.png) repeat-x; height:5px; display:block;}
 
 .form,.texts{width:50%; line-height:20px;}
@@ -41,3 +42,6 @@ img{max-width:100%;}
 .footer{background:url(../images/admin/footerbackground.png) repeat-x; height:14px; display:block;color:#fff; padding:10px 15px; text-transform:uppercase; font-size:10px;text-align:center;}
 .footer a{color:#fff !important;}
 .forms{padding-bottom:20px;}
+
+/*Appointment Today*/
+#collapse_appnt {display:none}

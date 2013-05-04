@@ -10,6 +10,7 @@ if(isset($user_content) && ($user_content)!=NULL)
 	{
 
 ?>
+  
 <h2><center>Welcome to the Dashboard</center></h2>
 
 <?php } ?>

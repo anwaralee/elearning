@@ -33,5 +33,9 @@ class Admin_model extends CI_Model
 		}
 		else return NULL;
 	}
+        
+        function verifyLoginModel(){
+            echo "Test";
+        }
 }
 ?>

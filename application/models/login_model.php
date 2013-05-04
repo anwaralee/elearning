@@ -62,7 +62,12 @@
 					return true;
 				}
 				else return false;
-			}			
+			}
+                 
+                 else 
+                       if($as == 'superadmin'){
+                           
+                       }
 		}
 		
 		function logout($uname)

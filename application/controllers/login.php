@@ -12,7 +12,7 @@ class Login extends CI_Controller {
     }
 
     function index() {
-        if ($this->session->userdata('user')) {
+         if ($this->session->userdata('user')) {
             redirect('dashboard/welcome');
         } else if ($this->session->userdata('admin')) {
             redirect('admin');
