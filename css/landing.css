@@ -45,3 +45,5 @@ img{max-width:100%;}
 
 /*Appointment Today*/
 #collapse_appnt {display:none}
+
+.appointmentForm{padding:30px !important; margin:auto; width:180%; margin-bottom:20px !important;}

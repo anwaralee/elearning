@@ -118,7 +118,8 @@
                                                             <div class="clear"></div>
                                                         </li>
                                                         <li>
-                                                            <input type="submit" value="Login" class="btn btn-success" style="margin-right:20px;"><a href="<?php echo base_url(); ?>login/forgot_login">Lost Your Password?</a> | <a href="<?php echo base_url(); ?>login/signup">Register</a>
+                                                            <hr />
+                                                            <input type="submit" value="Login" class="btn btn-success" style="margin-right:20px;"><a href="<?php echo site_url('appointment');?>" class="btn btn-primary">Book An Appointment</a> <br /><hr /><a href="<?php echo base_url(); ?>login/forgot_login">Lost Your Password?</a> | <a href="<?php echo base_url(); ?>login/signup">Register</a>
 
                                                         </li>
                                                     </ul>
@@ -132,7 +133,8 @@
                                         </div>
                                     <?php } ?>
                                 </div>
-                                <!--Appointment Today -->
+                                <!--
+                                
                                 <div class="appointment_today texts" align="center"> 
                                     <div id="main_appnt_btn">
                                         <input type='button' id="appnt_btn" name='submit' value="Book An Appointment Today" class="btn btn-primary" onclick="$('#collapse_appnt').show();"/>
@@ -155,6 +157,6 @@
 
 
                         <div class="footer">
-                            Training Management System - Copyright Â© LITTLE MORE IT
+                            Training Management System - Copyright © LITTLE MORE IT
                         </div>
 

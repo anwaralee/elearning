@@ -196,5 +196,9 @@
             return $courseByBatch->result();
             
         }
+        
+        function getAllBranches(){
+            return $this->db->get('tbl_branch')->result();
+        }
 	}
 ?>

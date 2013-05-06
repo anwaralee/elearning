@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>E-Learning</title>
+        <title>Training Management System</title>
 
         <link href="<?php echo base_url(); ?>css/bootstrap.css" type="text/css" rel="stylesheet">
             <link href="<?php echo base_url(); ?>css/landing.css" type="text/css" rel="stylesheet">
@@ -18,6 +18,11 @@
                             <h2 align="center">Super Administrator Login</h2>
                             <div class="seperator"></div>
                             <div align="center">
+                                 <?php
+                                                if (isset($error)) {
+                                                    echo "<center><font color='red'>" . $error . "</font></center>";
+                                                }
+                                                ?>
                                 <form action= "<?php echo base_url(); ?>superadmin/verifyLogin" method="post">
 
                                     <ul>
