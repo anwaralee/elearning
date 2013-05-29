@@ -29,6 +29,52 @@ class Super_site_conf_model extends CI_Model
 		else return false;
 	}
         
+        function site_setting()
+	{
+		$q="select * from tbl_configuration";
+		$res=mysql_query($q);
+		if(mysql_num_rows($res)>0)
+		{
+			return $res;	
+		}
+		else return NULL;
+	}
+	
+	function edit_site_setting()
+	{
+		$name=$this->input->post('name');
+		$email=$this->input->post('email'); 
+		$contact=$this->input->post('contact');
+		$file_name = time()."_".rand("100000","999999");
+	    $ext = end(explode('/', $_FILES['logo']['type']));
+		if($ext!='')
+		{
+	    $complete=$file_name.".".$ext;
+	   	$path = str_replace('system/','',BASEPATH).'images/admin/'.$complete;
+		if(move_uploaded_file($_FILES['logo']['tmp_name'],$path))
+		{
+			$q="select site_logo from tbl_configuration";
+			$res=mysql_query($q);
+			if(mysql_num_rows($res)>0)
+			{
+				$img=mysql_fetch_assoc($res);	
+				unlink(str_replace('system/','',BASEPATH).'images/admin/'.$img['site_logo']);
+			}
+			else return NULL;
+		}
+		$q="update tbl_configuration set site_name='$name', site_email='$email', site_logo='$complete', site_contact='$contact'";
+		}
+		else
+		{
+			$q="update tbl_configuration set site_name='$name', site_email='$email',site_contact='$contact'";
+		}
+		$res=mysql_query($q);
+		if($res)
+		{
+			return $res;	
+		}
+		else return NULL;
+	}
         
 	
 	

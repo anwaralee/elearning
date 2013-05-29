@@ -72,6 +72,21 @@ class SuperAdmin extends CI_Controller {
 		$data['page'] = 'superadmin/pages/site_conf/login_setting';
 		$this->load->view('superadmin/superadmin_dash',$data);
 	}
+        
+        function site_setting()
+	{
+		$data['site']=$this->super_site_conf_model->site_setting();
+		$data['page']='superadmin/pages/site_conf/site_setting_view';
+		$this->load->view('superadmin/superadmin_dash',$data);
+	}
+	function edit_site_setting()
+	{
+		$edit=$this->super_site_conf_model->edit_site_setting();
+		$data['mes']='The Site Configuration have been updated.';
+		$data['site']=$this->super_site_conf_model->site_setting();
+		$data['page']='superadmin/pages/site_conf/site_setting_view';
+		$this->load->view('superadmin/superadmin_dash',$data);
+	}
 	
 	      
 }
