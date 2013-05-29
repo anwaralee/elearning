@@ -17,21 +17,73 @@ height:300px;
 {
 	text-align:center;
 }
+    .calendar{
+        font-family: sans-serif;
+        font-size: 14px;
+    }
+    table.calendar{
+        margin: auto;
+        border-collapse: collapse;
+		width:720px;
+        
+        }
+        .calendar .days td{
+            width: 60px;
+            height: 60px;
+            padding:4px;
+            border: 1px solid #999;
+            vertical-align: top;
+            background-color: #00000;
+       }
+       .calendar .days td:hover{
+        background-color: #FFF;
+       }
+
+       .calendar .highlight {
+         
+          font-weight: bold;
+          color:#00F;
+
+        }
+        
+        .content {margin-left:18px; margin-top: 20px}
+        
+        .day_num{margin-left: 40px; margin-top:20px; font-size: large}
+</style>
+<style type="text/css">
+
+		
+		
 </style>
 <script type="text/javascript">
+    $(document).ready(function() {
+ $('#checkday').hide();
+});
 function show_confirm()
 {
 return confirm("Are you sure you want to remove the schedule?");	
 }
+
+function showErrorDiv(){
+    $('#checkday').show();
+    
+}
+
 </script>
 <div class="h_left"><h2>Schedule Manager</h2></div>
 <div class="seperator"></div>
-<div class="add_new"><a href="<?php echo base_url()?>schedule/add" class="btn btn-inverse">Add new</a></div>
+<div class="add_new"><a href="<?php echo base_url()?>schedule/list_timeslots" class="btn btn-info">Manage TimeSlots</a>
+<a href="<?php echo base_url()?>schedule/configure_working_days" class="btn btn-danger">Configure Working Days</a></div>
 <div class="seperator"></div>
+<span id="checkday" class="errorMsg" onclick="$('#checkday').hide();">
+    <center><font color='red'><?php echo $this->session->userdata('daycheck');?></font></center>
+</span>
+
+<h2 align="center">Click on dates to manage schedules</h2>
 <div class="calendar">
 <?php
-$year = date('Y');
-echo $this->calendar->generate($year,$this->uri->segment(4),$links);
+
+echo $this->calendar->generate($this->uri->segment(3),$this->uri->segment(4),$links);
 /*if($schedule!=NULL)
 {
    ?>  

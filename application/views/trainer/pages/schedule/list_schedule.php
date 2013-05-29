@@ -6,30 +6,41 @@ return confirm("Are you sure you want to remove the course?");
 </script>
 <div class="h_left"><h2>Schedule(s)</h2></div>
 <div class="seperator"></div>
-
-<?php
-if($schedule!=NULL)
-{
-   ?>
-   <table width="50%">
+<?php if(!empty($allSchedules)){?>
+<table width="90%">
 <tr>
 <th>S/N</th>
-<th>Title</th>
+<th>Lesson</th>
+<th>Date</th>
+<th>Time</th>
 <th>Action</th>
 </tr>
-   <?php 
+
+
+
+<?php
+if($allSchedules)
+{
 	$i = 0;
-	while($c = mysql_fetch_assoc($schedule))
-	{
+	foreach($allSchedules as $schedule):
 		$i++;
-		echo "<tr><td>".$i."</td>
-		<td class='c_right'>".$c['training_title']."</td>
-		<td class='action'>
-		<a href = '".base_url()."schedules/view_schedule/".$c['training_id']."' class='btn btn-info'>View</a></td></tr>";
-	}
 	?>
-    </table>
-    <?php
+		<tr>
+			<td><?php echo $i;?></td>
+			<td class='c_right'><?php echo $this->schedule_model->getLessonNameById($schedule->lesson_id)->lesson_name;?></td>
+                        <td class='c_right'><?php echo $schedule->training_date;?></td>
+                        <td class='c_right'><?php echo $this->schedule_model->getTrainingTimeById($schedule->timeslot_id)->time;?></td>
+			<td class='action'>
+				<a href ="<?php echo base_url();?>schedules/view_schedule_details/<?php echo $schedule->training_id;?>" class='btn btn-info'>View Details</a>
+			</td>
+                       
+		</tr>
+	<?php
+		endforeach;
 }
-else echo "<h2>No schedules.</h2>";
 ?>
+
+</table>
+<?php } else {?>
+<h3> No Schedules found</h3>
+<?php } ?>

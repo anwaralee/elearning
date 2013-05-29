@@ -47,7 +47,7 @@
 				if($res->num_rows() > 0)
 				{
 					$this->session->set_userdata('admin',$un);
-					return true;
+                                      	return true;
 				}
 				else return false;
 			}
@@ -112,6 +112,7 @@
 			$email=$this->input->post('email');
                         $batch = $this->input->post('batch');
                         $course = $this->input->post('course');
+                        $training_id = $this->input->post('training_id');
 			//$gender=$this->input->post('gender');
 			//$yyyy=$this->input->post('yyyy');
 			/*$mm=$this->input->post('mm');
@@ -134,8 +135,7 @@
 						   'username' => $user,
 						   'password' => $pass,
 						   'contact_number' => $contact,
-                                                   'batch' =>$batch,
-                                                   'course'=>$course,
+                                                   
 						  // 'image' => $complete,
 						   'email' => $email,
 						   /*'gender' => $gender,
@@ -153,6 +153,13 @@
 						);
 
 			$this->db->insert('tbl_users', $data); 	
+
+			$result = $this->db->get_where('tbl_users',array('username'=>$user))->row();
+			$userId = $result->user_id;
+
+			$data1 = array('user_id'=>$userId,'course_id'=>$course,'training_id'=>$training_id,'course_status'=>1,'payment_status'=>1);
+
+			$this->db->insert('tbl_training_users',$data1);
 	}
 	
 	function login_forgot()
@@ -196,9 +203,14 @@
             return $courseByBatch->result();
             
         }
-        
-        function getAllBranches(){
-            return $this->db->get('tbl_branch')->result();
+        function getTrainingsByCourse($id){
+        	$this->db->order_by('training_date');
+
+        	//TODO
+        	$this->db->limit('1');
+        	return $this->db->get_where('tbl_training',array('course_id'=>$id))->result();
         }
+        
+       
 	}
 ?>

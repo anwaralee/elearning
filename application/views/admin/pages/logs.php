@@ -23,5 +23,8 @@ foreach($logs as $log)
 }
 ?>
 </table>
+<?php echo $this->pagination->create_links(); ?>
 <?php
-}?>
+} else {?>
+<h2>No logs yet</h2>
+<?php } ?>

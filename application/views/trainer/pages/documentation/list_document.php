@@ -1,35 +1,43 @@
-<div class="h_left"><h2>Document(s)</h2></div>
-<div class="seperator"></div>
-<table width="50%">
-<tr>
-<th>S/N</th>
-<th>Title</th>
-<th>Action</th>
-</tr>
+<script type="text/javascript">
+    function show_confirm()
+    {
+        return confirm("Are you sure you want to remove the document?");	
+    }
+    
+    function selectSchedule(){
+    
+ 
+        var selectedSchedule = $("#selectSchedule").find(':selected').attr('value');
+    
+        $.ajax({
+            type: "GET",
+            url: "getDocumentBySchedule/"+selectedSchedule,
+            data: "",
+            success: function(msg){
+                $("#tableList").html(msg);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                $("#tableList").html(xhr.responseText);
+                alert(thrownError);
+            }
 
-<?php
-if($document)
-{
-	$i = 0;
-	while($c = mysql_fetch_assoc($document))
-	{
-		$i++;
-		echo "<tr>
-		<td class='c_left'>".$i."</td>
-		<td class='c_right'>".$c['doc_title']."</td>
-		<td class='action'>
-		<a href= '".base_url()."documentation/view_document/".$c['doc_id']."' class='btn btn-danger'>View Details</a>";
-		if($c['doc_file']!=NULL)
-		{
-		echo "&nbsp;<a href= '".base_url()."documentation/view_docs/".$c['doc_id']."' class='btn btn-danger'>View File</a>";
-		}
-		else echo "<b> The document has no file</b>";
-		if($c['doc_file']!=NULL && $c['isDownloadable']==1)
-		{
-		echo "&nbsp;<a href = '".base_url()."documentation/download/".$c['doc_id']."' class='btn btn-info'>Download</a>";
-		}
-		echo "</td></tr>";
-	}
-}
-?>
-</table>
+
+        });
+    
+    }
+</script>
+<div class="h_left"><h2>Document Management </h2></div>
+<div class="seperator"></div>
+<div class="add_new"><form action="<?php echo base_url(); ?>document_manager/add" method="post"><input type="submit" value="Add new" name="add" class="btn btn-inverse"></form></div>
+<div class="add_new">
+    <label>Select Schedule to proceed:</label><select name="schedule_id" id="selectSchedule" onchange="selectSchedule()">
+       <option value="-1">Select a schedule to proceed</option>
+        <option value="0">All</option>
+        <?php foreach ($allSchedules as $schedule): ?>
+            <option value="<?php echo $schedule->lesson_id; ?>"><?php echo $this->documentation_model->getLessonNameById($schedule->lesson_id)->lesson_name; ?></option>
+        <?php endforeach; ?>
+    </select></div>
+
+<div id="tableList">
+   
+</div>

@@ -47,7 +47,7 @@ $route['logout']='site/logout';
 $route['login']='login/loginn';
 $route['admin_dashboard']='admin/admin_dashboard';
 $route['quiz/attempt/(:any)'] = 'quiz';
-$route['lesson/(:any)'] = 'lesson';
+//$route['lesson/(:any)'] = 'lesson';
 $route['completed'] = 'lesson/complete';
 
 /*$route['browse_course']='course_front/browse_course';

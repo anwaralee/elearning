@@ -6,7 +6,7 @@
     <h2><?php echo $d['doc_title']; ?></h2>
     <table>
     <tr><td>Description:</td><td><?php if($d['doc_desc']!=NULL) echo $d['doc_desc']; else echo "No Description Available"?></td></tr>
-    <tr><td>File Size:</td><td><?php if($d['file_size']!=NULL) echo $d['file_size']; else echo "No File Size Available"?></td></tr>
+    
     </table>
     <?php
 	}

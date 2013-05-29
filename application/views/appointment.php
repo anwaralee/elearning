@@ -15,7 +15,7 @@
                     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
                     <script language='javascript'>
                         $(document).ready(function(){
-                            $("#register").validate();
+                           
                             $('#appnt_btn').click(function() {
                                 $('#collapse_appnt').show();
                             }); 
@@ -53,7 +53,7 @@
                                     <div class="loginForm appointmentForm " id="loginDivForm">
 
 
-                                        <form action= "<?php echo base_url(); ?>login/verify" method="post">
+                                        <form action= "<?php echo base_url(); ?>appointment/register" method="post">
                                             <h1>Thank for your interest in one of our Work Experience Courses </h1>
                                             <h3>Please book your appointment with one of your consultant who would be happy to give you more details. </h3>
                                             <ul>
@@ -65,15 +65,19 @@
                                                 </li>
 
                                                 <li>
-                                                    <span class="floatLeft">Sur Name:</span><input type="text" name="surname" class="floatLeft"/>
+                                                    <span class="floatLeft">Sur Name:</span><input type="text" name="lastname" class="floatLeft"/>
                                                     <div class="clear"></div>
                                                 </li>
                                                 <li>
                                                     <span class="floatLeft">Phone No:</span><input type="text" name="phoneno" class="floatLeft"/>
                                                     <div class="clear"></div>
                                                 </li>
+                                                 <li>
+                                                    <span class="floatLeft">Email Address:</span><input type="text" name="email" class="floatLeft"/>
+                                                    <div class="clear"></div>
+                                                </li>
                                                 <li>
-                                                    <span class="floatLeft">Branch:</span class="floatLeft">
+                                                    <span class="floatLeft">Branch:</span>
                                                     <select name='branch_id' class="floatLeft">
                                                         <option value="0">Select a Branch</option>
                                                         <?php foreach ($allBranches as $branch): ?>
@@ -90,14 +94,12 @@
                                                 </li>
                                                 <li>
                                                     <span class="floatLeft">Choose Avaliable Time Slot:</span>
-                                                    <select name='branch_id' class="floatLeft">
+                                                    <select name='timeslot_id' class="floatLeft">
                                                         <option value="0">Select Time Slot</option>
 
-                                                        <option value="1">7:30 AM to 8:30 AM</option>
-                                                        <option value="1">8:30 AM to 9:30 AM</option>
-                                                        <option value="1">9:30 AM to 10:30 AM</option>
-                                                        <option value="1">11:30 AM to 12:30 AM</option>
-                                                        <option value="1">12:30 AM to 1:30 PM</option>
+                                                         <?php foreach ($allTimeslots as $timeslot): ?>
+                                                            <option value="<?php echo $timeslot->id; ?>"><?php echo $timeslot->start_time." to ".$timeslot->end_time; ?></option>
+                                                        <?php endforeach; ?>
 
                                                     </select>
                                                     <div class="clear"></div>
@@ -148,6 +150,6 @@
 
 
                             <div class="footer">
-                                Training Management System - Copyright © LITTLE MORE IT
+                                Training Management System - Copyright ï¿½ LITTLE MORE IT
                             </div>
 

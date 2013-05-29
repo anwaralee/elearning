@@ -66,8 +66,8 @@ if($admin)
 </div>
 <h3>First Email :</h3>
 <input type="text" name="first_email" value="<?php echo $a['admin_email1']?>" class="required">
-<h3>Second Email : </h3>
-<input type="text" name="second_email" value="<?php echo $a['admin_email2']?>" class="required">
+
+<input type="hidden" name="second_email" value="<?php echo $a['admin_email2']?>" class="required">
 <div class="seperator"></div>
 <input type="submit" value=" Update " class="btn btn-primary">
 

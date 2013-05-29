@@ -9,8 +9,8 @@
 <input type="password" name="admin_password">
 <h3>Admin Email 1:</h3>
 <input type="text" name="admin_email1">
-<h3>Admin Email 2:</h3>
-<input type="text" name="admin_email2">
+<!--h3>Admin Email 2:</h3-->
+<input type="hidden" name="admin_email2">
 <h3>Contact Number:</h3>
 <input type="text" name="admin_contact">
 

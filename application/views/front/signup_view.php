@@ -1,22 +1,38 @@
 <script type="text/javascript">
       function selectCourse(){
 
-
-        var select1 = document.getElementById("select_batch");
-        var val = select1.options[select1.selectedIndex].value;
-
+     
+        var selectedBatch = $("#select_batch").find(':selected').attr('value');
         $.ajax({
             type: "GET",
-            url: "<?php echo base_url(); ?>login/getCoursesByBatch/"+val,
+            url: "<?php echo base_url(); ?>login/getCoursesByBatch/"+selectedBatch,
             data: "",
             success: function(msg){
                       
-                document.getElementById('course_list').innerHTML=msg;
+                $('#course_list').html(msg);
             }
 
         });
           
     }
+
+    function selectTraining(){
+
+     
+        var selectedCourse = $("#course_list").find(':selected').attr('value');
+        $.ajax({
+            type: "GET",
+            url: "<?php echo base_url(); ?>login/getTrainingsByCourse/"+selectedCourse,
+            data: "",
+            success: function(msg){
+                      
+                $('#training_list').html(msg);
+            }
+
+        });
+          
+    }
+
     $(function (){			
         $("#register").validate({
             rules: {
@@ -127,8 +143,12 @@
 
 
                 </select></td></tr>
-        <tr><td>Course</td><td><select name='course' id="course_list">
-                    <option value="0">Select a Course</option>
+        <tr><td>Course</td><td><select name='course' id="course_list" onchange="selectTraining()">
+                    <option value="0">Select a Batch First</option>
+                </select></td></tr>
+
+        <tr><td>Available Training Dates</td><td><select name='training_id' id="training_list">
+                    <option value="0">Select a Course First</option>
                 </select></td></tr>
         <tr><td>Contact Number</td><td><input type='text' name='contact' value="<?php if(isset($contact)){echo $contact;}?>"/></td></tr>
        <!-- <tr><td>City/Town</td><td><input type='text' name='city'/></td></tr> -->

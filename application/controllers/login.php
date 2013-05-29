@@ -13,7 +13,7 @@ class Login extends CI_Controller {
 
     function index() {
          if ($this->session->userdata('user')) {
-            redirect('dashboard/welcome');
+            redirect('trainee');
         } else if ($this->session->userdata('admin')) {
             redirect('admin');
         } else if ($this->session->userdata('trainer')) {
@@ -32,7 +32,7 @@ class Login extends CI_Controller {
         $data['home_content'] = $this->login_model->home_content();
         $result = $this->login_model->verify();
         if ($result && $this->session->userdata('user')) {
-            redirect('dashboard/welcome');
+            redirect('trainee');
         } else if ($result && $this->session->userdata('admin')) {
             redirect('admin');
         } else if ($result && $this->session->userdata('trainer')) {
@@ -81,6 +81,7 @@ class Login extends CI_Controller {
             $data['email'] = $this->input->post('email');
             $data['branch'] = $this->input->post('branch');
             $data['course'] = $this->input->post('course');
+               $data['training_id'] = $this->input->post('training_id');
             //$data['gender']=$this->input->post('gender');
             //$data['yyyy']=$this->input->post('yyyy');
             //$data['mm']=$this->input->post('mm');
@@ -167,6 +168,12 @@ class Login extends CI_Controller {
          $data['coursesByBatch']  = $this->login_model->getCoursesByBatch($id);
          
            $this->load->view('front/course_list',$data);
+    }
+
+    function getTrainingsByCourse($id){
+
+        $data['trainingsByCourse'] = $this->login_model->getTrainingsByCourse($id);
+        $this->load->view('front/training_list',$data);
     }
 
 }

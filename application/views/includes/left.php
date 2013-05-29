@@ -20,11 +20,11 @@ else
      <li><a href="<?php echo base_url();?>courses/course_history" <?php if($this->uri->segment(2) == 'account_settings'){echo 'class="active"';}?>><i class="icon-eye-open"></i><span class="menutext">My Course History</span></a></li>
    <li><a href="<?php echo base_url();?>dashboard/account_settings" <?php if($this->uri->segment(2) == 'account_settings'){echo 'class="active"';}?>><i class="icon-cog"></i><span class="menutext">Update Profile</span></a></li>
    <li><a href="<?php echo base_url();?>login/logout" <?php if($this->uri->segment(2) == 'logout'){echo 'class="active"';}?>><i class="icon-off"></i><span class="menutext">Log Out</span></a></li> -->
-   <li><a href="#"><i class="icon-leaf" ></i><span class="menutext">Start Training</span></a></li>
+   <li><a href="<?php echo base_url();?>trainee"><i class="icon-leaf" ></i><span class="menutext">Training Dashboard</span></a></li>
      <li><a href="#"><i class="icon-eye-open" ></i><span class="menutext">My Payment History</span></a></li>
-       <li><a href="#"><i class="icon-cog" ></i><span class="menutext">Resources</span></a></li>
-         <li><a href="#"><i class="icon-question-sign" ></i><span class="menutext">Assignments</span></a></li>
-           <li><a href="#"><i class="icon-question-sign" ></i><span class="menutext">Update Profile</span></a></li>
+       <li><a href="<?php echo base_url();?>trainee/view_all_documents"><i class="icon-cog" ></i><span class="menutext">Resources</span></a></li>
+         <li><a href="<?php echo base_url();?>trainee/view_all_assignments"><i class="icon-question-sign" ></i><span class="menutext">Assignments</span></a></li>
+           <li><a href="<?php echo base_url();?>dashboard/account_settings"><i class="icon-cog" ></i><span class="menutext">Update Profile</span></a></li>
             <li><a href="<?php echo base_url();?>login/logout" <?php if($this->uri->segment(2) == 'logout'){echo 'class="active"';}?>><i class="icon-off"></i><span class="menutext">Log Out</span></a></li>
   </ul>
 </div>
