@@ -35,9 +35,9 @@
 
 
     <?php
-    if ($coursesByBatch) {
+    if ($allCourses) {
         $i = 0;
-        foreach ($coursesByBatch as $course):
+        foreach ($allCourses as $course):
             $i++;
             ?>
             <tr>

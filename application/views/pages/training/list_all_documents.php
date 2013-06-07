@@ -6,6 +6,7 @@
         <tr>
             <th>S/N</th>
             <th>Title</th>
+            <th>Lesson</th>
             <th>Document Action</th>
       </tr>
 
@@ -18,6 +19,7 @@
                 <tr>
                     <td><?php echo $i; ?></td>
                     <td class='c_right'><?php echo $document->doc_title; ?></td>
+                    <td class='c_right'><?php echo $this->trainee_model->getLessonNameById($document->lesson_id)->lesson_name; ?></td>
                     <td class='action'>
                        
                         <?php if ($document->doc_file != NULL) { ?>

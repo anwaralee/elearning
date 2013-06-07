@@ -59,7 +59,7 @@ class Login extends CI_Controller {
     function signup() {
         $data['home_content'] = $this->login_model->home_content();
         $data['page'] = 'front/signup_view';
-         $data['allBatches'] = $this->login_model->getAllBatches();
+         $data['allBranches'] = $this->login_model->getAllBranches();
             $data['allCourses'] = $this->login_model->getAllCourses();
         $this->load->view('login', $data);
     }
@@ -81,7 +81,7 @@ class Login extends CI_Controller {
             $data['email'] = $this->input->post('email');
             $data['branch'] = $this->input->post('branch');
             $data['course'] = $this->input->post('course');
-               $data['training_id'] = $this->input->post('training_id');
+               $data['session_id'] = $this->input->post('training_id');
             //$data['gender']=$this->input->post('gender');
             //$data['yyyy']=$this->input->post('yyyy');
             //$data['mm']=$this->input->post('mm');

@@ -1,5 +1,5 @@
 <script type="text/javascript">
-      function selectCourse(){
+    function selectCourse(){
 
      
         var selectedBatch = $("#select_batch").find(':selected').attr('value');
@@ -41,7 +41,7 @@
                     equalTo: "#pass"
                 },
                 user:
-                {
+                    {
                     minlength:5
                 }
             },
@@ -53,7 +53,7 @@
 			
                 },
                 user:
-                {
+                    {
                     minlength:"Length must be atleast 5 character"
                 }
             }
@@ -69,9 +69,13 @@
 <?php echo "<font color='red'>" . validation_errors() . "</font>"; ?>
 <form action="<?php echo base_url(); ?>login/signup_verify" method="post" enctype="multipart/form-data" id="register">
     <table>
-        <tr><td>First Name<font color="red">*</font></td><td><input type='text' name='first' class="required" value="<?php if(isset($first)){echo $first;}?>"/></td></tr>
+        <tr><td>First Name<font color="red">*</font></td><td><input type='text' name='first' class="required" value="<?php if (isset($first)) {
+    echo $first;
+} ?>"/></td></tr>
         <!--<tr><td>Middle Name</td><td><input type='text' name='middle'/></td></tr> -->
-        <tr><td>Last Name</td><td><input type='text' name='last' value="<?php if(isset($last)){echo $last;}?>"/></td></tr>
+        <tr><td>Last Name</td><td><input type='text' name='last' value="<?php if (isset($last)) {
+    echo $last;
+} ?>"/></td></tr>
        <!-- <tr><td>Image</td><td><input type='file' name='image'/></td></tr> 
         <tr><td>DOB</td><td class="dob"> 
         <?php
@@ -131,41 +135,53 @@
         echo '</select>';
         ?>
         </td></tr> -->
-        <tr><td>Username<font color="red">*&nbsp;</font></td><td><input type='text' name='user' class="required" value="<?php if(isset($user)){echo $user;}?>"/></td></tr>
-        <tr><td>Password<font color="red">*&nbsp;</font></td><td><input type="password" name="pass" class="required" id="pass"  value="<?php if(isset($pass)){echo $pass;}?>"/></td></tr>
-        <tr><td>Confirm Password<font color="red">*&nbsp;</font></td><td><input type="password" name="confpass" class="required" id="confpass"  value="<?php if(isset($pass)){echo $pass;}?>"/></td></tr>
+        <tr><td>Username<font color="red">*&nbsp;</font></td><td><input type='text' name='user' class="required" value="<?php if (isset($user)) {
+            echo $user;
+        } ?>"/></td></tr>
+        <tr><td>Password<font color="red">*&nbsp;</font></td><td><input type="password" name="pass" class="required" id="pass"  value="<?php if (isset($pass)) {
+                        echo $pass;
+                    } ?>"/></td></tr>
+        <tr><td>Confirm Password<font color="red">*&nbsp;</font></td><td><input type="password" name="confpass" class="required" id="confpass"  value="<?php if (isset($pass)) {
+                        echo $pass;
+                    } ?>"/></td></tr>
         <!-- <tr><td>Gender</td><td><input type='radio' name='gender' value="male" class="required"/>&nbsp;Male&nbsp;<input type="radio" name="gender" value="female" class="required"/>&nbsp;Female</td></tr> -->
-        <tr><td>Batch</td><td><select name='batch' id="select_batch" onchange="selectCourse()">
-                    <option value="0">Select a Batch</option>
-                    <?php foreach ($allBatches as $batch): ?>
-                        <option value="<?php echo $batch->batch_id; ?>"><?php echo $batch->batch_name; ?></option>
-                    <?php endforeach; ?>
+        <tr><td>Branch</td><td><select name='branch' id="select_batch">
+                    <option value="0">Select a Branch</option>
+                    <?php foreach ($allBranches as $branch): ?>
+                        <option value="<?php echo $branch->branch_id; ?>"><?php echo $branch->branch_name; ?></option>
+<?php endforeach; ?>
 
 
                 </select></td></tr>
-        <tr><td>Course</td><td><select name='course' id="course_list" onchange="selectTraining()">
-                    <option value="0">Select a Batch First</option>
+        <tr><td>Course</td><td><select name='course' id="course_list">
+                    <option value="0">Select a Course</option>
+<?php foreach ($allCourses as $course): ?>
+
+                        <option value="<?php echo $course->course_id; ?>"><?php echo $course->course_name; ?></option>
+<?php endforeach; ?>
                 </select></td></tr>
 
-        <tr><td>Available Training Dates</td><td><select name='training_id' id="training_list">
-                    <option value="0">Select a Course First</option>
-                </select></td></tr>
-        <tr><td>Contact Number</td><td><input type='text' name='contact' value="<?php if(isset($contact)){echo $contact;}?>"/></td></tr>
+       
+        <tr><td>Contact Number</td><td><input type='text' name='contact' value="<?php if (isset($contact)) {
+    echo $contact;
+} ?>"/></td></tr>
        <!-- <tr><td>City/Town</td><td><input type='text' name='city'/></td></tr> -->
         <!-- <tr><td>Province/State</td><td><input type='text' name='province'/></td></tr>
         <tr><td>Postal Code/Zip Code</td><td><input type='text' name='postal'/></td></tr>
         <tr><td>Country</td><td>
         <select name="country">
-        <?php
-        $country = $this->login_model->getCountry();
-        while ($co = mysql_fetch_assoc($country)) {
-            $countries = $co['countryName'];
-            echo "<option value='" . $countries . "'>" . $countries . "</option>";
-        }
-        ?>
+<?php
+$country = $this->login_model->getCountry();
+while ($co = mysql_fetch_assoc($country)) {
+    $countries = $co['countryName'];
+    echo "<option value='" . $countries . "'>" . $countries . "</option>";
+}
+?>
          </select>
         </td></tr> -->
-        <tr><td>Email<font color="red">*&nbsp;</font></td><td><input type='text' name='email' class="required" value="<?php if(isset($email)){echo $email;}?>"/></td></tr>
+        <tr><td>Email<font color="red">*&nbsp;</font></td><td><input type='text' name='email' class="required" value="<?php if (isset($email)) {
+    echo $email;
+} ?>"/></td></tr>
     </table>
     <div class="seperator"></div>
     <input type='submit' name='submit' value="Sign Up" class="btn btn-primary"/>

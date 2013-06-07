@@ -11,11 +11,27 @@ class Schedule extends CI_Controller {
 
     public function index() {
         if ($this->session->userdata('admin'))
-            redirect('schedule/list_schedule');
+            redirect('schedule/schedule_home');
         else
             redirect('login');
     }
+    
+    function schedule_home(){
+            $config['base_url'] = base_url().'schedule/schedule_home';
+            $config['total_rows'] = $this->db->get('tbl_training')->num_rows();
+            $config['per_page'] = 15;
+            $config['num_links'] = 4;
+            $config['full_tag_open'] = '<div id="pagination">';
+            $config['full_tag_close'] = '</div>';
 
+            $this->pagination->initialize($config);
+            
+            $data['allSchedules'] = $this->db->order_by('training_date','asc');
+            $data['allSchedules'] = $this->db->get('tbl_training', $config['per_page'], $this->uri->segment(3))->result();
+         $data['page'] = 'admin/pages/schedule/schedule_home';
+        $this->load->view('admin/admin_dash', $data);
+    }
+    
     public function list_schedule() {
         $m = date('m');
         $d = date('d');
@@ -140,19 +156,21 @@ class Schedule extends CI_Controller {
     function remove_schedule() {
 
         $this->schedule_model->remove_schedule();
-        redirect('schedule/list_schedule');
+        redirect('schedule/schedule_home');
     }
 
     function inspect() {
+        $startDate = $this->uri->segment(4);
+        $actualStartDate = strtotime($startDate);
         $date = $this->uri->segment(3);
         $data['date'] = $date;
         $actualDate = strtotime($date);
         $day = date('D', $actualDate);
         $data['day'] = $day;
         $result = $this->schedule_model->inspectWorkingDay($day);
-        if (empty($result)) {
+        if (empty($result))  {
             $this->session->set_flashdata('daycheck', 'Not a working day. Configure Working days first');
-            redirect('schedule');
+            redirect('schedule/list_schedule');
         } else {
             $data['schedulesByDate'] = $this->schedule_model->inspect();
             $data['page'] = 'admin/pages/schedule/list_schedule_by_date';
@@ -169,6 +187,11 @@ class Schedule extends CI_Controller {
     function getLessonsByCourse($courseId) {
         $data['lessonsByCourse'] = $this->schedule_model->getLessonsByCourse($courseId);
         $this->load->view('admin/pages/schedule/list_lessons_by_course', $data);
+    }
+    
+    function getSessionsByCourse($courseId) {
+        $data['sessionsByCourse'] = $this->schedule_model->getSessionsByCourse($courseId);
+        $this->load->view('admin/pages/schedule/list_sessions_by_course', $data);
     }
     
     function getEditLessonsByCourse($courseId) {

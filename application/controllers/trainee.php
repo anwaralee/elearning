@@ -5,6 +5,7 @@ class Trainee extends CI_Controller {
     public function __construct() {
         parent::__construct();
 
+        $this->load->helper('date');
         if (!$this->session->userdata('user')) {
             redirect('login');
         }
@@ -12,11 +13,29 @@ class Trainee extends CI_Controller {
     }
 
    function index(){
-
+       
+       $status = $this->trainee_model->getCourseStatus();
+       
+       if(!empty ($status)){
+           $enrollmentStatus = $status->enrollment_status;
+           if($enrollmentStatus==2){
+                $data['courseStatus'] = $status;
+                
+                $data['appDetails'] = $this->trainee_model->getAppointmentDetails($status->training_id);
+                $data['pages']='pages/training/booked_status';
+                $this->load->view('enrollment_view',$data);
+           }
+           else if($enrollmentStatus==1){
+                $data['pages']='pages/training/welcome_course';
+                $this->load->view('dashboard_view',$data); 
+           }
+       }
+       else{
         $data['allTrainings'] = $this->trainee_model->getAllTrainings();
-
         $data['pages']='pages/training/list_all_trainings';
-        $this->load->view('dashboard_view',$data); 
+        $this->load->view('enrollment_view',$data); 
+       }
+        
 
    }
 
@@ -59,6 +78,24 @@ class Trainee extends CI_Controller {
         }
         else
             redirect('trainee/view_all_documents');
+    }
+    
+    function enrollment(){
+        $data['traineeDetails'] = $this->trainee_model->getTraineeDetails();
+        $data['pages']='pages/enrollment/enrollment_form';
+        $this->load->view('enrollment_view',$data);
+    }
+    
+    function submit(){
+        $data['allSchedules'] = $this->trainee_model->getAllSchedules();
+        $data['pages'] = 'pages/training/submit_assignment';
+        $this->load->view('dashboard_view', $data);
+        
+    }
+    
+    function submit_assignment() {
+        $this->trainee_model->submit_assignment();
+        redirect('trainee/view_all_assignments');
     }
     
 }

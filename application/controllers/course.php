@@ -12,7 +12,8 @@ class Course extends CI_Controller {
     }
 
     function list_courses() {
-        $data['allBatches'] = $this->course_model->listAllBatches();
+      //  $data['allBatches'] = $this->course_model->listAllBatches();
+        $data['allCourses'] = $this->course_model->getAllCourses();
         $data['page'] = 'admin/pages/course/list_course';
         $this->load->view('admin/admin_dash', $data);
     }
@@ -64,7 +65,8 @@ class Course extends CI_Controller {
     function assign_trainer(){
         
         $data['allBatches'] = $this->course_model->listAllBatches();
-        $data['courseById'] = $this->course_model->getAllCoursesByID();
+        $data['allCourses'] = $this->course_model->getAllCourses();
+        $data['allTrainers'] = $this->course_model->getAllTrainers();
         
         $data['page'] = 'admin/pages/course/assign_trainer';
         $this->load->view('admin/admin_dash',$data);

@@ -30,15 +30,40 @@
 <div class="seperator"></div>
 <div class="add_new"><form action="<?php echo base_url(); ?>course/add_course" method="post"><input type="submit" value="Add new" name="add" class="btn btn-inverse"></form></div>
 <div class="add_new"><form action="<?php echo base_url(); ?>course/assign_trainer" method="post"><input type="submit" value="Assign Trainers" name="add" class="btn btn-info"></form></div>
-<div class="add_new">
-    <label>Select Batch:</label><select name="batch_id" id="selectBatch" onchange="selectBatch()">
-         <option value="-1">Select a batch to proceed</option>
-        <option value="0">All</option>
-        <?php foreach ($allBatches as $batch): ?>
-            <option value="<?php echo $batch->batch_id; ?>"><?php echo $batch->batch_name; ?></option>
-        <?php endforeach; ?>
-    </select></div>
+
 
 <div id="tableList">
    
+<table width="80%">
+<tr>
+<th>S/N</th>
+<th>Course</th>
+<th>Description</th>
+<th>Action</th>
+</tr>
+
+
+
+<?php
+if($allCourses)
+{
+	$i = 0;
+	foreach($allCourses as $course):
+		$i++;
+	?>
+		<tr>
+			<td><?php echo $i;?></td>
+			<td class='c_right'><?php echo $course->course_name;?></td>
+			<td class='c_right'><?php echo $course->course_description;?></td>
+			<td class='action'>
+					<a href="<?php echo base_url();?>course/remove/<?php echo $course->course_id;?>" onclick='return show_confirm()' class='btn btn-danger'>Remove</a> 
+					<a href ="<?php echo base_url();?>course/edit_course/<?php echo $course->course_id;?>" class='btn btn-info'>Edit</a>
+			</td>
+		</tr>
+	<?php
+		endforeach;
+}
+?>
+
+</table>
 </div>

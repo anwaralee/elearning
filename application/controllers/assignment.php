@@ -97,6 +97,15 @@ class Assignment extends CI_Controller {
         else
              redirect('assignment/assignment_home');
     }
+    
+    function view_assignments_by_trainee(){
+        $user_id = $this->uri->segment('3');
+        $training_id = $this->uri->segment('4');
+        $data['assignments'] = $this->assignment_model->getAssignmentsByTrainee($user_id,$training_id);
+        $data['dashboard'] = 'trainer/pages/assignment/list_assignment_by_trainee';
+        $this->load->view('trainer/trainer_dashboard', $data);
+        
+    }
 
 }
 

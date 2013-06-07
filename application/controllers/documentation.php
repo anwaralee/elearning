@@ -39,6 +39,12 @@ class Documentation extends CI_Controller {
         $data['dashboard'] = 'trainer/pages/documentation/view_docs';
         $this->load->view('trainer/trainer_dashboard', $data);
     }
+    
+     function view_assignments() {
+        $data['f'] = $this->documentation_model->view_assignments();
+        $data['dashboard'] = 'trainer/pages/documentation/view_docs';
+        $this->load->view('trainer/trainer_dashboard', $data);
+    }
 
     function view_document() {
         $data['document'] = $this->documentation_model->view_document();
@@ -50,6 +56,21 @@ class Documentation extends CI_Controller {
         $this->load->helper('download');
         $id = $this->uri->segment(3);
         $fil = $this->documentation_model->download($id);
+        if ($fil != NULL) {
+            $file = mysql_fetch_assoc($fil);
+            $path = str_replace('system/', '', BASEPATH) . "docs/" . $file['doc_file'];
+            $data = file_get_contents($path); // Read the file's contents
+            $name = $file['doc_file'];
+            force_download($name, $data);
+        }
+        else
+            redirect('documentation');
+    }
+    
+    function download_assignments() {
+        $this->load->helper('download');
+        $id = $this->uri->segment(3);
+        $fil = $this->documentation_model->download_assignment($id);
         if ($fil != NULL) {
             $file = mysql_fetch_assoc($fil);
             $path = str_replace('system/', '', BASEPATH) . "docs/" . $file['doc_file'];

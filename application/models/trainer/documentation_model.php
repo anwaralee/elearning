@@ -34,6 +34,17 @@ class Documentation_model extends CI_model {
             return NULL;
     }
 
+    function view_assignments() {
+        $id = $this->uri->segment(3);
+        $quer = "select * from tbl_assignment_users where assign_id='$id'";
+        $result = mysql_query($quer);
+        if (mysql_num_rows($result) > 0) {
+            return $result;
+        }
+        else
+            return NULL;
+    }
+
     function download($id) {
         $q = "select doc_file from tbl_doc where doc_id='$id' and isDownloadable=1";
         $result = mysql_query($q);
@@ -44,6 +55,16 @@ class Documentation_model extends CI_model {
             return NULL;
     }
 
+    function download_assignment($id) {
+        $q = "select doc_file from tbl_assignment_users where assign_id='$id'";
+        $result = mysql_query($q);
+        if (mysql_num_rows($result) > 0) {
+            return $result;
+        }
+        else
+            return NULL;
+    }
+    
     function getCourse($id) {
         $q = "select course_name from tbl_course where course_id='$id'";
         $res = mysql_query($q);
@@ -68,7 +89,11 @@ class Documentation_model extends CI_model {
         $result = $this->db->get_where('tbl_trainer', array('username' => $trainer))->row();
         $trainer_id = $result->trainer_id;
 
-        $this->db->order_by('timeslot_id', 'training_date');
+
+      
+        $this->db->select('lesson_id');
+        $this->db->distinct();
+        $this->db->order_by('training_date');
         return $this->db->get_where('tbl_training', array('trainer_id' => $trainer_id, 'status' => 1))->result();
     }
 

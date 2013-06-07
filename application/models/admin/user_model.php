@@ -58,7 +58,12 @@ class User_model extends CI_Model
 			$active=0;	
 		}
 		$q="update tbl_users set isPaid='$isPaid', status='$active' where user_id='$id'";
+                
 		mysql_query($q);
+                
+                
+                $this->db->where('user_id',$id);
+                $this->db->update('tbl_training_users',array('enrollment_status'=>$isPaid));
 	}
 	function getProvince($id)
 		{

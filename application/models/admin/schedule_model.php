@@ -22,6 +22,7 @@ class Schedule_model extends CI_model {
        $desc = '';
         $courseId = $this->input->post('course_id');
         $lessonId = $this->input->post('lesson_id');
+        $sessionId = $this->input->post('session_id');
         $trainerId = $this->input->post('trainer_id');
         $timeSlotId = $this->input->post('timeslot_id');
         $date = $this->input->post('date');
@@ -31,6 +32,7 @@ class Schedule_model extends CI_model {
             'training_date' => $date,
             'timeslot_id' => $timeSlotId,
             'course_id' => $courseId,
+            'session_id'=>$sessionId,
             'lesson_id' => $lessonId,
             'trainer_id' => $trainerId,
             'status' => $active);
@@ -136,6 +138,10 @@ class Schedule_model extends CI_model {
 
     function getLessonsByCourse($courseId) {
         return $this->db->get_where('tbl_lesson', array('course_id' => $courseId))->result();
+    }
+    
+     function getSessionsByCourse($courseId) {
+        return $this->db->get_where('tbl_course_session', array('course_id' => $courseId))->result();
     }
 
     function addWorkingDays() {
@@ -429,6 +435,10 @@ class Schedule_model extends CI_model {
     function getCourseNameById($id) {
         return $this->db->get_where('tbl_course', array('course_id' => $id))->row();
     }
+    
+    function getSessionNameById($id) {
+        return $this->db->get_where('tbl_course_session', array('session_id' => $id))->row();
+    }
 
     function getLessonNameById($id) {
         return $this->db->get_where('tbl_lesson', array('lesson_id' => $id))->row();
@@ -445,6 +455,12 @@ class Schedule_model extends CI_model {
         return $result;
     }
 
+    function getTrainerNameByCourse($courseId) {
+
+        $result = $this->db->get_where('tbl_course_trainer', array('course_id' => $courseId))->row();
+        
+        return $this->db->get_where('tbl_trainer',array('trainer_id'=>$result->trainer_id))->row();
+    }
 
 
 }

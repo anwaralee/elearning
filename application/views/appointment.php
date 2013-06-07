@@ -21,12 +21,31 @@
                             }); 
                         });
                         
+                        function getTimeSlots(){
+
+     
+                            var selectedBranch = $("#select_branch").find(':selected').attr('value');
+                            var selectedDate = $("#datepicker").attr('value');
+                            $.ajax({
+                                type: "GET",
+                                url: "<?php echo base_url(); ?>appointment/getTimeSlots/"+selectedBranch+"/"+selectedDate,
+                                data: "",
+                                success: function(msg){
+                      
+                                    $('#timeslot_list').html(msg);
+                                }
+
+                            });
+          
+                        }
                     </script>
                     <script>
                         $(function() {
                             new JsDatePick({
                                 useMode:2,
-                                target:"datepicker"
+                                target:"datepicker",
+                                dateFormat:"%Y-%m-%d"
+                                
                             });
                         });
                     </script>
@@ -72,13 +91,17 @@
                                                     <span class="floatLeft">Phone No:</span><input type="text" name="phoneno" class="floatLeft"/>
                                                     <div class="clear"></div>
                                                 </li>
-                                                 <li>
+                                                <li>
                                                     <span class="floatLeft">Email Address:</span><input type="text" name="email" class="floatLeft"/>
                                                     <div class="clear"></div>
                                                 </li>
                                                 <li>
+                                                    <li>
+                                                        <span class="floatLeft">Choose Appointment Date:</span><input  id="datepicker" class="floatLeft" type="text" name="appointment_date"/>
+                                                        <div class="clear"></div>
+                                                    </li>
                                                     <span class="floatLeft">Branch:</span>
-                                                    <select name='branch_id' class="floatLeft">
+                                                    <select name='branch_id' class="floatLeft" id="select_branch" onchange="getTimeSlots();">
                                                         <option value="0">Select a Branch</option>
                                                         <?php foreach ($allBranches as $branch): ?>
                                                             <option value="<?php echo $branch->branch_id; ?>"><?php echo $branch->branch_name; ?></option>
@@ -88,18 +111,12 @@
                                                     </select>
                                                     <div class="clear"></div>
                                                 </li>
-                                                <li>
-                                                    <span class="floatLeft">Choose Appointment Date:</span><input  id="datepicker" class="floatLeft" type="text" name="appointment_date"/>
-                                                    <div class="clear"></div>
-                                                </li>
+
                                                 <li>
                                                     <span class="floatLeft">Choose Avaliable Time Slot:</span>
-                                                    <select name='timeslot_id' class="floatLeft">
-                                                        <option value="0">Select Time Slot</option>
+                                                    <select name='timeslot_id' class="floatLeft" id="timeslot_list">
+                                                        <option value="0">Select Branch and Date First</option>
 
-                                                         <?php foreach ($allTimeslots as $timeslot): ?>
-                                                            <option value="<?php echo $timeslot->id; ?>"><?php echo $timeslot->start_time." to ".$timeslot->end_time; ?></option>
-                                                        <?php endforeach; ?>
 
                                                     </select>
                                                     <div class="clear"></div>

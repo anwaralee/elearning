@@ -39,6 +39,27 @@
 
         });
     }
+    
+    function getSessions(){
+
+        var selectedCourse = $("#selectCourse").find(':selected').attr('value');
+	 
+        $.ajax({
+            type: "GET",
+            url: "<?php echo base_url(); ?>schedule/getSessionsByCourse/"+selectedCourse,
+            data: "",
+            success: function(msg){
+                $("#sessionsList").html(msg);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                $("#sessionsList").html(xhr.responseText);
+                alert(thrownError);
+            }
+
+
+        });
+    }
+     
 </script>
 
 <!--script language="javascript">
@@ -71,13 +92,18 @@ $(document).ready(function () {
 <form action="<?php echo base_url(); ?>schedule/add_schedule/<?php echo $this->uri->segment('3'); ?>" method="post" id="lesson">
    
     <h3>Course:</h3>
-    <select id="selectCourse" name="course_id" onchange="getTrainer();getLessons();">
+    <select id="selectCourse" name="course_id" onchange="getTrainer();getLessons();getSessions();">
         <option value="0">Select a course</option>
         <?php foreach ($allCourses as $course) : ?>
             <option value="<?php echo $course->course_id; ?>"><?php echo $course->course_name; ?></option>
         <?php endforeach; ?>
     </select>
-
+     <h3>Sessions</h3>
+   
+    <select name="session_id" id="sessionsList">
+        <option value="0"><font color="red">Please select any course first</font></option>
+    </select>
+  
     <h3>Lessons</h3>
    
     <select name="lesson_id" id="lessonsList">

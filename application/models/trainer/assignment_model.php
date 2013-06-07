@@ -69,7 +69,9 @@ class Assignment_model extends CI_model {
         $result = $this->db->get_where('tbl_trainer', array('username' => $trainer))->row();
         $trainer_id = $result->trainer_id;
 
-        $this->db->order_by('timeslot_id', 'training_date');
+          $this->db->select('lesson_id');
+        $this->db->distinct();
+        $this->db->order_by('training_date');
         return $this->db->get_where('tbl_training', array('trainer_id' => $trainer_id, 'status' => 1))->result();
     }
 
@@ -213,6 +215,11 @@ class Assignment_model extends CI_model {
      function getLessonNameById($id) {
         
         return $this->db->get_where('tbl_lesson',array('lesson_id'=>$id))->row();
+    }
+    
+    function getAssignmentsByTrainee($userId, $trainingId){
+        
+        return $this->db->get_where('tbl_assignment_users',array('user_id'=>$userId,'training_id'=>$trainingId))->result();
     }
 
 }

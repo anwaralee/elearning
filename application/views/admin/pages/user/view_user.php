@@ -55,7 +55,8 @@ $user = mysql_fetch_assoc($det);
 <td><strong>Postal Code:</strong> </td><td><?php if($user['postal_code'] =='') echo "No Postal Code Entered"; else echo $user['postal_code'];?></td>
 </tr>
 <tr>
-<td><strong>Is Paid:</strong> </td><td><input type="radio" name="isPaid" value="1" <?php if($user['isPaid']==1){?> checked="checked"<?php }?> />Yes<input type="radio" name="isPaid" value="0" <?php if($user['isPaid']==0){?> checked="checked"<?php }?> />No</td>
+<td><strong>Is Paid:</strong> </td>
+<td><input type="radio" name="isPaid" value="1" <?php if($user['isPaid']==1){?> checked="checked"<?php }?> />Yes<input type="radio" name="isPaid" value="0" <?php if($user['isPaid']==0){?> checked="checked"<?php }?> />No</td>
 </tr>
 
 <tr>

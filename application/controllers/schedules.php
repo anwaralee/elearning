@@ -15,9 +15,15 @@ class Schedules extends CI_Controller {
         else
             redirect('login');
     }
+    
+    function list_courses(){
+        $data['allCourses'] = $this->schedule_model->getAssignedCourses();
+        $data['dashboard'] = 'trainer/pages/schedule/list_assigned_courses';
+        $this->load->view('trainer/trainer_dashboard', $data);
+    }
 
-    function list_schedule() {
-        $data['allSchedules'] = $this->schedule_model->list_schedule();
+    function list_schedule($sessionId) {
+        $data['allSchedules'] = $this->schedule_model->list_schedule($sessionId);
         $data['dashboard'] = 'trainer/pages/schedule/list_schedule';
         $this->load->view('trainer/trainer_dashboard', $data);
     }
@@ -33,6 +39,15 @@ class Schedules extends CI_Controller {
         $data['scheduleById'] = $this->schedule_model->getScheduleDetailsById();
         $data['dashboard'] = 'trainer/pages/schedule/list_schedule_details';
         $this->load->view('trainer/trainer_dashboard', $data);
+    }
+    
+    function view_trainees($sessionId){
+        
+        $data['allTrainees'] = $this->schedule_model->getTraineesBySession($sessionId);
+          $data['dashboard'] = 'trainer/pages/schedule/view_trainees';
+      
+        $this->load->view('trainer/trainer_dashboard', $data);
+        
     }
 
 }

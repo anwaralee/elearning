@@ -9,6 +9,7 @@ class Timeslot extends CI_Controller {
             redirect('admin');
         }
         $this->load->model('admin/timeslot_model');
+        $this->load->model('admin/schedule_model');
     }
 
     function list_timeslots(){
@@ -24,11 +25,13 @@ class Timeslot extends CI_Controller {
 
       
     function add_appointment_timeslot() {
+        $data['selectedDays'] = $this->schedule_model->getSelectedDays();
         $data['page'] = 'admin/pages/timeslot/add_appointment_timeslot';
         $this->load->view('admin/admin_dash', $data);
     }
 
     function addAppointmentTimeslot() {
+      
         $this->timeslot_model->addAppointmentTimeslot();
         redirect('timeslot/list_appointment_timeslots');
     }

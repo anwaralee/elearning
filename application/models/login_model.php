@@ -110,9 +110,9 @@
 			$contact=$this->input->post('contact');
 			//$image=$this->input->post('image');
 			$email=$this->input->post('email');
-                        $batch = $this->input->post('batch');
+                        $branch = $this->input->post('branch');
                         $course = $this->input->post('course');
-                        $training_id = $this->input->post('training_id');
+                        $session_id = $this->input->post('training_id');
 			//$gender=$this->input->post('gender');
 			//$yyyy=$this->input->post('yyyy');
 			/*$mm=$this->input->post('mm');
@@ -120,9 +120,9 @@
 			$country=$this->input->post('country');
 			$city=$this->input->post('city');
 			$province=$this->input->post('province');
-			$postal=$this->input->post('postal');
+			$postal=$this->input->post('postal'); */
 			$date=date('Y/m/d H:i:s');
-			$file_name = time()."_".rand("100000","999999");
+			/*$file_name = time()."_".rand("100000","999999");
 			$ext = end(explode('/', $_FILES['image']['type']));
 			$complete=$file_name.".".$ext;
 			$path = str_replace('system/','',BASEPATH).'/images/users/'.$complete;
@@ -134,10 +134,13 @@
 						   'last_name' => $last,
 						   'username' => $user,
 						   'password' => $pass,
+                                                   
 						   'contact_number' => $contact,
                                                    
 						  // 'image' => $complete,
 						   'email' => $email,
+                                                    'branch_id'=>$branch,
+                                                    'course_id'=>$course,                                                
 						   /*'gender' => $gender,
 						   'dob_year' => $yyyy,
 						   'dob_month' => $mm,
@@ -147,19 +150,19 @@
 						   'province_id' => $province,
 						   'postal_code' => $postal, */
 						   'isPaid' => '',
-						  // 'registered_date' => $date,
+						   'registered_date' => $date,
 						  // 'verification_code' => '',
 						   'status' => '1' 
 						);
 
 			$this->db->insert('tbl_users', $data); 	
 
-			$result = $this->db->get_where('tbl_users',array('username'=>$user))->row();
+			/*$result = $this->db->get_where('tbl_users',array('username'=>$user))->row();
 			$userId = $result->user_id;
 
-			$data1 = array('user_id'=>$userId,'course_id'=>$course,'training_id'=>$training_id,'course_status'=>1,'payment_status'=>1);
+			$data1 = array('user_id'=>$userId,'branch_id'=>$branch,'course_id'=>$course,'session_id'=>$session_id,'course_status'=>1,'payment_status'=>1);
 
-			$this->db->insert('tbl_training_users',$data1);
+			$this->db->insert('tbl_training_users',$data1); */
 	}
 	
 	function login_forgot()
@@ -186,8 +189,8 @@
 		
 	}
 	
-        function getAllBatches(){
-            $batches = $this->db->get('tbl_batch');
+        function getAllBranches(){
+            $batches = $this->db->get('tbl_branch');
              return $batches->result();
         }
         
@@ -204,13 +207,15 @@
             
         }
         function getTrainingsByCourse($id){
-        	$this->db->order_by('training_date');
-
-        	//TODO
-        	$this->db->limit('1');
-        	return $this->db->get_where('tbl_training',array('course_id'=>$id))->result();
+        	
+        	return $this->db->get_where('tbl_course_session',array('course_id'=>$id))->result();
         }
         
-       
+         function getStartDate($id){
+      
+        $this->db->select_min('lesson_id');
+        $this->db->select('training_date');
+      return $this->db->get_where('tbl_training',array('session_id'=>$id))->row();
+         }
 	}
 ?>

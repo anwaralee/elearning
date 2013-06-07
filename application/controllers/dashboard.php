@@ -10,6 +10,8 @@
 			}*/
 			
 			$this->load->model('dashboard_model');
+                        $this->load->model('trainee/trainee_model');
+                        
 		}
 			
 		function index()
@@ -126,15 +128,22 @@
 		
 		function account_settings()
 		{
+                        
 			if(!$this->session->userdata('user'))
 			{
 					redirect('login');
 			}	
+                        $status = $this->trainee_model->getCourseStatus();
 			$user=$this->session->userdata('user');
 			$data['user']=$user;
 			$data['userDetail']=$this->dashboard_model->account_settings($user);
 			$data['pages']='front/account_settings_view';
-			$this->load->view('dashboard_view',$data);
+                        if(!empty($status)){
+                            $this->load->view('enrollment_view',$data);
+                        }else{
+                            $this->load->view('dashboard_view',$data);
+                        }
+			
 		}
 		
 		function update_settings()
@@ -143,10 +152,15 @@
 			{
 					redirect('login');
 			}	
+                         $status = $this->trainee_model->getCourseStatus();
 			$data['updateData']=$this->dashboard_model->update_settings();
 			$data['user']=$this->session->userdata('user');
 			$data['pages']='front/update_settings_view';
-			$this->load->view('dashboard_view',$data);
+			if(!empty($status)){
+                            $this->load->view('enrollment_view',$data);
+                        }else{
+                            $this->load->view('dashboard_view',$data);
+                        }
 		}
 	}
 ?>

@@ -3,13 +3,10 @@
 
 <table width="70%">
 <tr class='c_right'>
-    <td>Training Title:</td>
-    <td><?php echo $scheduleById->training_title;?></td>
+    <td>Training Session:</td>
+    <td><?php echo $this->schedule_model->getSessionNameById($scheduleById->session_id)->session_name;?></td>
 </tr>
-<tr>
-    <td>Training Description</td>
-    <td><?php echo $scheduleById->training_desc;?></td>
-</tr>
+
 <tr>
     <td>Assigned Date:</td>
     <td><?php echo $scheduleById->training_date;?></td>

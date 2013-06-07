@@ -14,6 +14,7 @@ return confirm("Are you sure you want to remove the schedule?");
 <th>Time</th>
 <!--th>Title</th-->
 <th>Course</th>
+<th>Session</th>
 <th>Lesson</th>
 <th>Trainer</th>
 <th>Action</th>
@@ -33,7 +34,8 @@ if($schedulesByDate)
 			<!--td class='c_right'><?php echo $schedule->training_title;?></td-->
                        	<td class='c_right'><?php echo $this->schedule_model->getTrainingTimeById($schedule->timeslot_id)->time;?></td>
                         <td class='c_right'><?php echo $this->schedule_model->getCourseNameById($schedule->course_id)->course_name;?></td>
-			<td class='c_right'><?php echo $this->schedule_model->getLessonNameById($schedule->lesson_id)->lesson_name;?></td>
+			<td class='c_right'><?php echo $this->schedule_model->getSessionNameById($schedule->session_id)->session_name;?></td>
+                        <td class='c_right'><?php echo $this->schedule_model->getLessonNameById($schedule->lesson_id)->lesson_name;?></td>
 			<td class='c_right'>
                             <?php echo $this->schedule_model->getTrainerNameById($schedule->trainer_id)->firstname." ".$this->schedule_model->getTrainerNameById($schedule->trainer_id)->lastname;?></td>
 			<td class='action'>

@@ -70,11 +70,9 @@ function showErrorDiv(){
 }
 
 </script>
-<div class="h_left"><h2>Schedule Manager</h2></div>
+<div class="h_left"><h2>Manage Schedules</h2></div>
 <div class="seperator"></div>
-<div class="add_new"><a href="<?php echo base_url()?>schedule/list_timeslots" class="btn btn-info">Manage TimeSlots</a>
-<a href="<?php echo base_url()?>schedule/configure_working_days" class="btn btn-danger">Configure Working Days</a></div>
-<div class="seperator"></div>
+
 <span id="checkday" class="errorMsg" onclick="$('#checkday').hide();">
     <center><font color='red'><?php echo $this->session->userdata('daycheck');?></font></center>
 </span>

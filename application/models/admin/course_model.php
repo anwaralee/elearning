@@ -67,6 +67,9 @@ class Course_model extends CI_Model {
         return $this->db->get('tbl_batch')->result();
     }
 
+    function getAllCourses(){
+        return $this->db->get('tbl_course')->result();
+    }
     function getCourseByBatches($batchId) {
         if ($batchId != 0) {
             return $this->db->get_where('tbl_course', array('batch_id' => $batchId))->result();

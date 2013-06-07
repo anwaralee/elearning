@@ -1,7 +1,7 @@
 <div class="h_left"><h2>Add new Time Slot</h2></div>
 <div class="seperator"></div>
 <form action="<?php echo base_url(); ?>schedule/insertTimeslot" method="post">
-    <h3>Batch Name:</h3>
+    <h3>Day:</h3>
     <select name="day_id">
         <option value="0">Select avaliable Day</option>
         <?php if ($selectedDays->day_sun) { ?>
